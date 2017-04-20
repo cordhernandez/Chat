@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1B6B857BF4C98B54A764EFE9BFF2A98A0C1BA153",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EB3E639CF5E36BEC9E7909FB1389280A49D3D61F" : 9223372036854775807,
+    "1B6B857BF4C98B54A764EFE9BFF2A98A0C1BA153" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9333FFDB-6D49-49B1-A02A-F4F1E495983A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EB3E639CF5E36BEC9E7909FB1389280A49D3D61F" : "",
+    "1B6B857BF4C98B54A764EFE9BFF2A98A0C1BA153" : "Chat\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Chat",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Chat\/Chat.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cordhernandez\/Chat.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B6B857BF4C98B54A764EFE9BFF2A98A0C1BA153"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cordhernandez\/IOSI_SM_1.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB3E639CF5E36BEC9E7909FB1389280A49D3D61F"
+    }
+  ]
+}
