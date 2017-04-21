@@ -1,3 +1,20 @@
+    func loginUserErrorHandler(with email: String, and password: String, loginErrorHandler: loginErrorHandler?) {
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            
+            if error != nil {
+                
+                self.handleFirebaseErrors(firebaseError: error! as NSError, loginHandler: loginErrorHandler)
+            }
+            else {
+                
+                loginErrorHandler?(nil)
+            }
+            
+        })
+        
+    }
+    
     func logOutUser() -> Bool {
         
         if FIRAuth.auth()?.currentUser != nil {
