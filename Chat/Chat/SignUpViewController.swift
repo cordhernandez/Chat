@@ -19,7 +19,11 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        checkIfUserIsStillLoggedInFromSignUpVC()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,13 +61,3 @@ class SignUpViewController: UIViewController {
     
 }
 
-
-//MARK: Segues
-extension SignUpViewController {
-    
-    func goToContactsFromSignup() {
-        
-        performSegue(withIdentifier: "signupToContactsSegue", sender: nil)
-    }
-    
-}
