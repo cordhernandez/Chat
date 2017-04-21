@@ -1,3 +1,21 @@
+//
+//  FirebaseAuthorizations.swift
+//  Chat
+//
+//  Created by Cordero Hernandez on 4/20/17.
+//  Copyright © 2017 Cordero. All rights reserved.
+//
+
+import Foundation
+import FirebaseAuth
+
+typealias loginErrorHandler = (_ errorMessage: String?) -> Void
+
+class FirebaseAuthorization: NSObject {
+    
+    static let instance = FirebaseAuthorization()
+    private override init() {}
+    
     func signUpUserErrorHandler(with email: String, and password: String, loginErrorHandler: loginErrorHandler?) {
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user , error) in
