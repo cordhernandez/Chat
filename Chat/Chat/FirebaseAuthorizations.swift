@@ -1,3 +1,25 @@
+    func signUpUserErrorHandler(with email: String, and password: String, loginErrorHandler: loginErrorHandler?) {
+        
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user , error) in
+            
+            if error != nil {
+                
+                self.handleFirebaseErrors(firebaseError: error! as NSError, loginHandler: loginErrorHandler)
+            }
+            else {
+                
+                if user?.uid != nil {
+                    
+                    //store user to database
+                    FireDatabase.instance.saveUserToDatabase(withID: user?.uid ?? "", email: email, password: password)
+                    
+                    //login the user 
+                    self.loginUserErrorHandler(with: email, and: password, loginErrorHandler: loginErrorHandler)
+                }
+            }
+        })
+    }
+    
     func loginUserErrorHandler(with email: String, and password: String, loginErrorHandler: loginErrorHandler?) {
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
