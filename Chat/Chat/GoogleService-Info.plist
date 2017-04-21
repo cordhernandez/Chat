@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:211499640689:ios:6efb263ac1cd331d</string>
 	<key>DATABASE_URL</key>
-	<string>https://chat-caaf8.firebaseio.com</string>
+	<string>https://chat-caaf8.firebaseio.com/</string>
 </dict>
 </plist>
