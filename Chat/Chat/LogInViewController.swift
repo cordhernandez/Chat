@@ -21,6 +21,19 @@ class ViewController: UIViewController {
         
     }
 
-
+//MARK: Segues
+extension LogInViewController {
+    
+    func goToContactsFromLogin() {
+        
+        performSegue(withIdentifier: "loginToContactsSegue", sender: nil)
+    }
+    
+    func goToSignUp() {
+        
+        performSegue(withIdentifier: "toSignUpSegue", sender: nil)
+    }
+    
+    
 }
 
