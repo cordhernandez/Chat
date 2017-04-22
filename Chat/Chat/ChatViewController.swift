@@ -21,6 +21,22 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        let message = messages[indexPath.item]
+        
+        if message.senderId == self.senderId {
+            
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+        }
+        else {
+            
+            return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.blue)
+        }
+        
+    }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
         return JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "placeholder profile image"), diameter: 30)
