@@ -1,3 +1,15 @@
+//
+//  FirebaseDatabase.swift
+//  Chat
+//
+//  Created by Cordero Hernandez on 4/20/17.
+//  Copyright © 2017 Cordero. All rights reserved.
+//
+
+import Foundation
+import FirebaseDatabase
+import FirebaseStorage
+
     func saveUserToDatabase(withID: String, email: String, password: String) {
         
         let data: [String : Any] = [FirebaseDataModel.email : email,
