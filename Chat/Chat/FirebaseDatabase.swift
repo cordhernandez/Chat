@@ -1,3 +1,28 @@
+    func observeUserMessages() {
+        
+        messagesReference.observe(FIRDataEventType.childAdded) { (snapshot: FIRDataSnapshot) in
+            
+            guard let data = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            guard let senderID = data[FirebaseDataModel.senderID] as? String else {
+                return
+            }
+            
+            guard let text = data[FirebaseDataModel.text] as? String else {
+                return
+            }
+            
+            guard let senderName = data[FirebaseDataModel.senderName] as? String else {
+                return
+            }
+            
+            self.messageDataDelegate?.messageDataReceived(senderID: senderID, senderName: senderName, text: text)
+        }
+        
+    }
+    
     func observeUserMediaMessages() {
         
         mediaMessagesReference.observe(FIRDataEventType.childAdded) { (snapshot: FIRDataSnapshot) in
