@@ -21,6 +21,34 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func photoDataReceived(senderID: String, senderName: String, url: URL?) {
+        
+        guard let mediaURL = url else {
+            return
+        }
+        
+        let sdWebImageDownloader = SDWebImageDownloader.shared().downloadImage(with: mediaURL, options: [], progress: nil) { (image, data, error, finished) in
+            
+            self.main.addOperation {
+                
+                let jsqPhotoImage = JSQPhotoMediaItem(image: image)
+                
+                if senderID == self.senderId {
+                    
+                    jsqPhotoImage?.appliesMediaViewMaskAsOutgoing = true
+                }
+                else {
+                    
+                    jsqPhotoImage?.appliesMediaViewMaskAsOutgoing = false
+                }
+                
+                self.messages.append(JSQMessage(senderId: senderID, displayName: senderName, media: jsqPhotoImage))
+                self.collectionView.reloadData()
+            }
+        }
+        
+    }
+    
     func videoDataReceived(senderID: String, senderName: String, url: URL?) {
         
         guard let mediaURL = url else {
