@@ -29,6 +29,7 @@ class ContactsTableViewController: UITableViewController, ContactDataDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
     
     @IBAction func onLogout(_ sender: UIButton) {
