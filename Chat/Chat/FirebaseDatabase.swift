@@ -1,3 +1,34 @@
+    func goLoadContacts() {
+        
+        var contactsArray: [FirebaseContactsModel] = []
+        
+        contactsReference.observeSingleEvent(of: FIRDataEventType.value) { (snapshot: FIRDataSnapshot) in
+            
+            guard let myContacts = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            for (key, value) in myContacts {
+                
+                guard let contactData = value as? NSDictionary else {
+                    continue
+                }
+                
+                guard let email = contactData[FirebaseDataModel.email] as? String else {
+                    continue
+                }
+                
+                let id = key as? String
+                let newContact = FirebaseContactsModel(name: id ?? "", id: email)
+                contactsArray.append(newContact)
+            }
+            
+            self.contactDataDelegate?.contactDataReceived(contacts: contactsArray)
+        }
+        
+    }
+    
+}
 
 //MARK: Firebase Database References
 extension FirebaseDatabase {
