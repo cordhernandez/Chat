@@ -21,6 +21,25 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        let message = messages[indexPath.item]
+        
+        if message.isMediaMessage {
+            
+            if let jsqVideoMediaItem = message.media as? JSQVideoMediaItem {
+                
+                let avPlayer = AVPlayer(url: jsqVideoMediaItem.fileURL)
+                let avPlayerViewController = AVPlayerViewController()
+                avPlayerViewController.player = avPlayer
+                
+                self.present(avPlayerViewController, animated: true, completion: nil)
+            }
+            
+        }
+        
+    }
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         FirebaseDatabase.instance.saveUserMessageToDatabase(senderID: senderId, senderName: senderDisplayName, text: text)
