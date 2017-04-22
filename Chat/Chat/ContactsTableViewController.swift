@@ -84,6 +84,20 @@ class ContactsTableViewController: UITableViewController {
 //
 //        return cell
 //    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactsTableViewCell else {
+            
+            return UITableViewCell()
+        }
+        
+        let row = indexPath.row
+        let contact = contacts[row]
+        
+        cell.contactIDLabel.text = contact.id
+        cell.contactNameLabel.text = contact.name
+        
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
