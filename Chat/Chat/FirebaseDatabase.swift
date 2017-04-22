@@ -1,3 +1,27 @@
+    func observeUserMediaMessages() {
+        
+        mediaMessagesReference.observe(FIRDataEventType.childAdded) { (snapshot: FIRDataSnapshot) in
+            
+            guard let data = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            guard let senderID = data[FirebaseDataModel.senderID] as? String else {
+                return
+            }
+            
+            guard let senderName = data[FirebaseDataModel.senderName] as? String else {
+                return
+            }
+            
+            guard let fileURL = data[FirebaseDataModel.url] as? String else {
+                return
+            }
+            
+            
+        }
+    }
+    
     func goLoadContacts() {
         
         var contactsArray: [FirebaseContactsModel] = []
