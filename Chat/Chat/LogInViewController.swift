@@ -20,6 +20,11 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        checkIfUserIsStillLoggedInFromLoginVC()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,19 +66,4 @@ class LogInViewController: UIViewController {
     
 }
 
-//MARK: Segues
-extension LogInViewController {
-    
-    func goToContactsFromLogin() {
-        
-        performSegue(withIdentifier: "loginToContactsSegue", sender: nil)
-    }
-    
-    func goToSignUp() {
-        
-        performSegue(withIdentifier: "toSignUpSegue", sender: nil)
-    }
-    
-    
-}
 
