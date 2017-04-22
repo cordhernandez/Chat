@@ -21,8 +21,19 @@ protocol MessageDataDelegate: class {
     func mediaDataReceived(senderID: String, senderName: String, url: String)
 }
 
+class FirebaseDatabase: NSObject {
+    
     static let instance = FirebaseDatabase()
     private override init() {}
+    
+    var databaseReference: FIRDatabaseReference {
+        return FIRDatabase.database().reference()
+    }
+    
+    var firebaseStorageReference: FIRStorageReference {
+        return FIRStorage.storage().reference(forURL: FirebaseStorageModel.storageReference)
+    }
+    
     weak var contactDataDelegate: ContactDataDelegate?
     weak var messageDataDelegate: MessageDataDelegate?
     
