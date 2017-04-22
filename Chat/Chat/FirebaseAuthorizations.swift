@@ -16,6 +16,8 @@ class FirebaseAuthorization: NSObject {
     static let instance = FirebaseAuthorization()
     private override init() {}
     
+    var userName = ""
+    
     func signUpUserErrorHandler(with email: String, and password: String, loginErrorHandler: loginErrorHandler?) {
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user , error) in
@@ -28,10 +30,7 @@ class FirebaseAuthorization: NSObject {
                 
                 if user?.uid != nil {
                     
-                    //store user to database
-                    FireDatabase.instance.saveUserToDatabase(withID: user?.uid ?? "", email: email, password: password)
-                    
-                    //login the user 
+                    FirebaseDatabase.instance.saveUserToDatabase(withID: user?.uid ?? "", email: email, password: password)
                     self.loginUserErrorHandler(with: email, and: password, loginErrorHandler: loginErrorHandler)
                 }
             }
