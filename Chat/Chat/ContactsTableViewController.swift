@@ -10,7 +10,9 @@ import Firebase
 import Foundation
 import UIKit
 
+class ContactsTableViewController: UITableViewController, ContactDataDelegate {
     
+    private var contacts: [FirebaseContactsModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,9 @@ import UIKit
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        FirebaseDatabase.instance.contactDataDelegate = self
+        FirebaseDatabase.instance.goLoadContacts()
     }
 
     override func didReceiveMemoryWarning() {
