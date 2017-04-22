@@ -21,6 +21,19 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func mediaDataReceived(senderID: String, senderName: String, url: String) {
+        
+        if let mediaURL = URL(string: url) {
+            
+            photoDataReceived(senderID: senderID, senderName: senderName, url: mediaURL)
+        }
+        else {
+            
+            let videoURL = URL(string: url)
+            videoDataReceived(senderID: senderID, senderName: senderName, url: videoURL)
+        }
+    }
+    
     func photoDataReceived(senderID: String, senderName: String, url: URL?) {
         
         guard let mediaURL = url else {
