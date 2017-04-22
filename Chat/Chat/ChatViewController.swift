@@ -21,6 +21,13 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        
+        FirebaseDatabase.instance.saveUserMessageToDatabase(senderID: senderId, senderName: senderDisplayName, text: text)
+        
+        finishSendingMessage()
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let imagePickerOriginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
