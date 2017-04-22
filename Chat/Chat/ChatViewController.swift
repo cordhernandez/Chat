@@ -21,6 +21,12 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func messageDataReceived(senderID: String, senderName: String, text: String) {
+        
+        messages.append(JSQMessage(senderId: senderID, displayName: senderName, text: text))
+        collectionView.reloadData()
+    }
+    
     func mediaDataReceived(senderID: String, senderName: String, url: String) {
         
         if let mediaURL = URL(string: url) {
