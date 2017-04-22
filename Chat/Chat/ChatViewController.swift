@@ -21,3 +21,10 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func selectMediaType(type: CFString) {
+        
+        imagePicker.mediaTypes = [type as String]
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+}
