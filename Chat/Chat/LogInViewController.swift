@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -25,7 +25,7 @@ class LogInViewController: UIViewController {
         
         checkIfUserIsStillLoggedInFromLoginVC()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
