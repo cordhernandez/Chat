@@ -73,6 +73,10 @@ class FirebaseAuthorization: NSObject {
         return false
     }
     
+    func getUserID() -> String {
+        return (FIRAuth.auth()?.currentUser?.uid) ?? ""
+    }
+    
     func getUserName() -> String {
         return (FIRAuth.auth()?.currentUser?.displayName) ?? ""
     }
