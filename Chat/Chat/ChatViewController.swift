@@ -21,6 +21,22 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let imagePickerOriginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            let jpegData = UIImageJPEGRepresentation(imagePickerOriginalImage, 0.01)
+            FirebaseDatabase.instance.saveUserMediaToDatbase(image: jpegData, video: nil, senderID: senderId, senderName: senderDisplayName)
+        }
+        else if let imagePickerMediaURL = info[UIImagePickerControllerMediaURL] as? URL {
+            
+            FirebaseDatabase.instance.saveUserMediaToDatbase(image: nil, video: imagePickerMediaURL, senderID: senderId, senderName: senderDisplayName)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        collectionView.reloadData()
+    }
+    
     override func didPressAccessoryButton(_ sender: UIButton!) {
         
         createAlertForChatMediaMessages(title: "Media Messages", message: "Please select a media")
