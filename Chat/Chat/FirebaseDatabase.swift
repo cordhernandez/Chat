@@ -1,3 +1,11 @@
+    func saveUserToDatabase(withID: String, email: String, password: String) {
+        
+        let data: [String : Any] = [FirebaseDataModel.email : email,
+                                    FirebaseDataModel.password : password]
+        
+        contactsReference.child(withID).setValue(data)
+    }
+    
     func saveUserMediaToDatbase(image: Data?, video: URL?, senderID: String, senderName: String) {
         
         if image != nil {
