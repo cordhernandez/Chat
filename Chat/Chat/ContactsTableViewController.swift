@@ -84,6 +84,20 @@ class ContactsTableViewController: UITableViewController {
 //
 //        return cell
 //    }
+    func getTheNameOfTheCurrentUser(with contacts: [FirebaseContactsModel]) {
+        
+        for contact in contacts {
+            
+            if contact.id == FirebaseAuthorization.instance.getUserID() {
+                FirebaseAuthorization.instance.userName = contact.name
+                
+            }
+            
+        }
+        
+    }
+    
+
     // MARK: Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         
