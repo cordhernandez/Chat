@@ -21,6 +21,11 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        
+        createAlertForChatMediaMessages(title: "Media Messages", message: "Please select a media")
+    }
+    
     func selectMediaType(type: CFString) {
         
         imagePicker.mediaTypes = [type as String]
