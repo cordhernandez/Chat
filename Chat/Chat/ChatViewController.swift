@@ -12,6 +12,13 @@ import JSQMessagesViewController
 import MobileCoreServices
 import UIKit
 import SDWebImage
+
+class ChatViewController: JSQMessagesViewController, MessageDataDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private var timeStamp: JSQMessagesTimestampFormatter?
+    private var messages: [JSQMessage] = []
+    private let imagePicker = UIImagePickerController()
+    
     fileprivate let async: OperationQueue = {
         
         let operationQueue = OperationQueue()
@@ -21,6 +28,20 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        FirebaseDatabase.instance.messageDataDelegate = self
+        getUserInformation()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
     func getUserInformation() {
         
         self.senderId = FirebaseAuthorization.instance.getUserID()
