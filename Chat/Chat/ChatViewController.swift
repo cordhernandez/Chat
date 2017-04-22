@@ -21,6 +21,14 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func getUserInformation() {
+        
+        self.senderId = FirebaseAuthorization.instance.getUserID()
+        self.senderDisplayName = FirebaseAuthorization.instance.getUserName()
+        FirebaseDatabase.instance.observeUserMessages()
+        FirebaseDatabase.instance.observeUserMediaMessages()
+    }
+    
     func messageDataReceived(senderID: String, senderName: String, text: String) {
         
         messages.append(JSQMessage(senderId: senderID, displayName: senderName, text: text))
