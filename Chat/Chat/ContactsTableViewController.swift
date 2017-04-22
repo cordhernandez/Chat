@@ -35,55 +35,6 @@ class ContactsTableViewController: UITableViewController {
         
         didTapLogoutButton()
     }
-//
-//    
-//    deinit {
-//        if let referenceHandle = firebaseHandle {
-//            self.firebaseReference.child("messages").removeObserver(withHandle: referenceHandle)
-//        }
-//    }
-//    
-//    
-//    func configureFirebaseDatabase(tableView: UITableView) -> Int {
-//        
-//        firebaseHandle = self.firebaseReference.child("messages").observe(.childAdded, with: { [weak self] (snapshot) -> Void in
-//            guard let strongSelf = self else { return }
-//            
-//            strongSelf.firebaseDataSnapshot.append(snapshot)
-//            strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.firebaseDataSnapshot.count - 1, section: 0)], with: .automatic)
-//        })
-//        
-//        return firebaseDataSnapshot.count
-//        
-//    }
-//    
-//
-//    // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return configureFirebaseDatabase(tableView: tableView)
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        
-//        return 0
-//    }
-//
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        
-//        let messageDataSnapshot = firebaseDataSnapshot[indexPath.row]
-//        
-//        guard let messageData = messageDataSnapshot.value as? [String:String] else { return cell }
-//       
-//
-//        
-//
-//        return cell
-//    }
     
     func contactDataReceived(contacts: [FirebaseContactsModel]) {
         self.contacts = contacts
