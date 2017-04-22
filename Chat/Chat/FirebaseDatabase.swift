@@ -1,3 +1,21 @@
+    func saveUserMediaMessageToDatabase(senderID: String, senderName: String, url: String) {
+        
+        let data: [String : Any] = [FirebaseDataModel.senderID : senderID,
+                                    FirebaseDataModel.senderName : senderName,
+                                    FirebaseDataModel.url : url]
+        
+        mediaMessagesReference.childByAutoId().setValue(data)
+    }
+    
+    func saveUserMessageToDatabase(senderID: String, senderName: String, text: String) {
+        
+        let data: [String : Any] = [FirebaseDataModel.senderID : senderID,
+                                    FirebaseDataModel.senderName : senderName,
+                                    FirebaseDataModel.text : text]
+        
+        messagesReference.childByAutoId().setValue(data)
+    }
+    
     func observeUserMessages() {
         
         messagesReference.observe(FIRDataEventType.childAdded) { (snapshot: FIRDataSnapshot) in
