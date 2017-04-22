@@ -10,11 +10,7 @@ import Firebase
 import Foundation
 import UIKit
 
-class ContactsTableViewController: UITableViewController {
     
-    var firebaseReference: FIRDatabaseReference!
-    var firebaseHandle: FIRDatabaseHandle?
-    var firebaseDataSnapshot: [FIRDataSnapshot] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +24,6 @@ class ContactsTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onLogout(_ sender: UIButton) {
