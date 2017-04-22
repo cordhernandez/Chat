@@ -21,6 +21,9 @@ protocol MessageDataDelegate: class {
     func mediaDataReceived(senderID: String, senderName: String, url: String)
 }
 
+    weak var contactDataDelegate: ContactDataDelegate?
+    weak var messageDataDelegate: MessageDataDelegate?
+    
     func saveUserToDatabase(withID: String, email: String, password: String) {
         
         let data: [String : Any] = [FirebaseDataModel.email : email,
