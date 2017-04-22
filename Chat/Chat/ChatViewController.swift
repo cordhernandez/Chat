@@ -21,6 +21,11 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        
+        return JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "placeholder profile image"), diameter: 30)
+    }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         
         let message = messages[indexPath.item]
