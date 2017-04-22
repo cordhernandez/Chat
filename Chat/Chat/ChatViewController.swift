@@ -21,6 +21,15 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as? JSQMessagesCollectionViewCell else {
+            
+            return UICollectionViewCell()
+        }
+        
+        return cell
+    }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
