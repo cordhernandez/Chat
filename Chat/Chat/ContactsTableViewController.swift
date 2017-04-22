@@ -84,6 +84,16 @@ class ContactsTableViewController: UITableViewController {
 //
 //        return cell
 //    }
+    
+    func contactDataReceived(contacts: [FirebaseContactsModel]) {
+        self.contacts = contacts
+        
+        //get the name of the current user
+        getTheNameOfTheCurrentUser(with: contacts)
+        
+        tableView.reloadData()
+    }
+    
     func getTheNameOfTheCurrentUser(with contacts: [FirebaseContactsModel]) {
         
         for contact in contacts {
