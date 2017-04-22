@@ -10,6 +10,17 @@ import Foundation
 import FirebaseDatabase
 import FirebaseStorage
 
+protocol ContactDataDelegate: class {
+    
+    func contactDataReceived(contacts: [FirebaseContactsModel])
+}
+
+protocol MessageDataDelegate: class {
+    
+    func messageDataReceived(senderID: String, senderName: String, text: String)
+    func mediaDataReceived(senderID: String, senderName: String, url: String)
+}
+
     func saveUserToDatabase(withID: String, email: String, password: String) {
         
         let data: [String : Any] = [FirebaseDataModel.email : email,
