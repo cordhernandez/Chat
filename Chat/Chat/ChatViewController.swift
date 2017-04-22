@@ -21,6 +21,28 @@ import SDWebImage
     }()
     
     fileprivate let main = OperationQueue.main
+    func videoDataReceived(senderID: String, senderName: String, url: URL?) {
+        
+        guard let mediaURL = url else {
+            return
+        }
+        
+        let jsqVideo = JSQVideoMediaItem(fileURL: mediaURL, isReadyToPlay: true)
+        
+        if senderID == self.senderId {
+            
+            jsqVideo?.appliesMediaViewMaskAsOutgoing = true
+        }
+        else {
+            
+            jsqVideo?.appliesMediaViewMaskAsOutgoing = false
+        }
+        
+        self.messages.append(JSQMessage(senderId: senderID, displayName: senderName, media: jsqVideo))
+        self.collectionView.reloadData()
+    }
+    
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         
         return messages[indexPath.item]
