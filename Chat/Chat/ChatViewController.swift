@@ -12,3 +12,12 @@ import JSQMessagesViewController
 import MobileCoreServices
 import UIKit
 import SDWebImage
+    fileprivate let async: OperationQueue = {
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 2
+        
+        return operationQueue
+    }()
+    
+    fileprivate let main = OperationQueue.main
