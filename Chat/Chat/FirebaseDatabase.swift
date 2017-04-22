@@ -1,3 +1,39 @@
+    func saveUserMediaToDatbase(image: Data?, video: URL?, senderID: String, senderName: String) {
+        
+        if image != nil {
+            
+            imageStorageReference.child(senderID + "\(NSUUID().uuidString).jpg").put(image!, metadata: nil) {(metadata: FIRStorageMetadata?, error: Error?) in
+                
+                if error != nil {
+                    //Inform the user that there was a problem uploading their image
+                }
+                else {
+                    
+                    self.saveUserMediaMessageToDatabase(senderID: senderID, senderName: senderName, url: String(describing: metadata?.downloadURL()))
+                }
+                
+            }
+            
+        }
+        else {
+            
+            videoStorageReference.child(senderID + "\(NSUUID().uuidString)").putFile(video!, metadata: nil, completion: { (metadata: FIRStorageMetadata?, error: Error?) in
+                
+                if error != nil {
+                    
+                    //Infrom the user that there as a problem uploading their video
+                }
+                else {
+                    
+                    self.saveUserMediaMessageToDatabase(senderID: senderID, senderName: senderName, url: String(describing: metadata?.downloadURL()))
+                }
+                
+            })
+            
+        }
+        
+    }
+    
     func saveUserMediaMessageToDatabase(senderID: String, senderName: String, url: String) {
         
         let data: [String : Any] = [FirebaseDataModel.senderID : senderID,
