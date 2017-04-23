@@ -144,7 +144,7 @@ class FirebaseDatabase: NSObject {
                 return
             }
             
-            
+            self.messageDataDelegate?.mediaDataReceived(senderID: senderID, senderName: senderName, url: fileURL)
         }
     }
     
