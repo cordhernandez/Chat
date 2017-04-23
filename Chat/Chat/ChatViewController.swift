@@ -41,6 +41,10 @@ class ChatViewController: JSQMessagesViewController, MessageDataDelegate, UIImag
         super.didReceiveMemoryWarning()
         
     }
+    @IBAction func onCancelButtonTapped(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     func getUserInformation() {
         
