@@ -168,13 +168,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="1MI-Mg-KLu">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpu-0T-GCw">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpu-0T-GCw">
                                     <rect key="frame" x="8" y="17" width="54" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="33" id="Uta-7X-Plm"/>
+                                        <constraint firstAttribute="width" constant="54" id="a9s-dx-Tzj"/>
+                                    </constraints>
                                     <state key="normal" title="Logout">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -182,44 +185,61 @@
                                         <action selector="onLogout:" destination="W3r-7H-S9k" eventType="touchUpInside" id="9dW-cz-PoT"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tav-nG-9GV">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tav-nG-9GV">
                                     <rect key="frame" x="79" y="17" width="217" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="24H-4I-2Eg">
+                                    <rect key="frame" x="0.0" y="55" width="375" height="44"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="W3r-7H-S9k" id="sua-oh-EID"/>
+                                    </connections>
+                                </searchBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="tav-nG-9GV" firstAttribute="centerX" secondItem="24H-4I-2Eg" secondAttribute="centerX" id="0qd-e6-CE7"/>
+                                <constraint firstAttribute="bottom" secondItem="24H-4I-2Eg" secondAttribute="bottom" id="D83-Vn-hfs"/>
+                                <constraint firstItem="tav-nG-9GV" firstAttribute="bottom" secondItem="Dpu-0T-GCw" secondAttribute="bottom" id="Tlv-hf-khA"/>
+                                <constraint firstItem="Dpu-0T-GCw" firstAttribute="leading" secondItem="1MI-Mg-KLu" secondAttribute="leadingMargin" id="eVT-dF-y3m"/>
+                                <constraint firstAttribute="trailing" secondItem="24H-4I-2Eg" secondAttribute="trailing" id="jti-1b-4xg"/>
+                                <constraint firstItem="24H-4I-2Eg" firstAttribute="leading" secondItem="1MI-Mg-KLu" secondAttribute="leading" id="k7E-cN-IQq"/>
+                                <constraint firstItem="tav-nG-9GV" firstAttribute="top" secondItem="Dpu-0T-GCw" secondAttribute="top" id="o3M-Sh-B3k"/>
+                                <constraint firstItem="24H-4I-2Eg" firstAttribute="top" secondItem="tav-nG-9GV" secondAttribute="bottom" constant="5" id="qiA-07-Y1i"/>
+                                <constraint firstItem="tav-nG-9GV" firstAttribute="leading" secondItem="Dpu-0T-GCw" secondAttribute="trailing" constant="17" id="yrR-Sf-K9u"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="79" id="5uB-K1-1l7" customClass="ContactsTableViewCell" customModule="Chat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="375" height="79"/>
+                                <rect key="frame" x="0.0" y="127" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5uB-K1-1l7" id="RM2-cC-3b8">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsI-kS-NDo">
-                                            <rect key="frame" x="30" y="16" width="126" height="18"/>
+                                            <rect key="frame" x="30" y="16" width="211" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ile-o4-53s">
-                                            <rect key="frame" x="30" y="42" width="134" height="20.5"/>
+                                            <rect key="frame" x="30" y="42" width="211" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Ile-o4-53s" secondAttribute="trailing" constant="203" id="EzM-0Y-Ti9"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ile-o4-53s" secondAttribute="trailing" constant="126" id="EzM-0Y-Ti9"/>
                                         <constraint firstItem="Ile-o4-53s" firstAttribute="leading" secondItem="RM2-cC-3b8" secondAttribute="leadingMargin" constant="22" id="HEv-tJ-aWs"/>
                                         <constraint firstItem="dsI-kS-NDo" firstAttribute="leading" secondItem="RM2-cC-3b8" secondAttribute="leadingMargin" constant="22" id="pZy-vT-cMk"/>
                                         <constraint firstItem="dsI-kS-NDo" firstAttribute="top" secondItem="RM2-cC-3b8" secondAttribute="topMargin" constant="8" id="rPA-uC-1EA"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ile-o4-53s" secondAttribute="bottom" constant="8" id="v9W-Aq-gYI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="dsI-kS-NDo" secondAttribute="trailing" constant="211" id="zGg-Pv-vhW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dsI-kS-NDo" secondAttribute="trailing" constant="126" id="zGg-Pv-vhW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -235,6 +255,8 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="searchBar" destination="24H-4I-2Eg" id="Je6-dJ-q9s"/>
+                        <outlet property="searchDisplayController" destination="nNU-v0-KDy" id="eJX-5n-Dd2"/>
                         <segue destination="4WY-Sp-ww9" kind="show" identifier="toChatSegue" id="Uls-Hg-77a"/>
                     </connections>
                 </tableViewController>
@@ -245,6 +267,15 @@
                         <outlet property="searchContentsController" destination="W3r-7H-S9k" id="hwh-Ju-dEg"/>
                         <outlet property="searchResultsDataSource" destination="W3r-7H-S9k" id="xV6-u8-YsF"/>
                         <outlet property="searchResultsDelegate" destination="W3r-7H-S9k" id="CWS-JK-LZo"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="nNU-v0-KDy">
+                    <connections>
+                        <outlet property="delegate" destination="W3r-7H-S9k" id="vkq-Hm-yo1"/>
+                        <outlet property="searchBar" destination="24H-4I-2Eg" id="3NP-It-Gdi"/>
+                        <outlet property="searchContentsController" destination="W3r-7H-S9k" id="uzN-qR-SCS"/>
+                        <outlet property="searchResultsDataSource" destination="W3r-7H-S9k" id="eKN-ct-Lxc"/>
+                        <outlet property="searchResultsDelegate" destination="W3r-7H-S9k" id="igQ-eb-qrH"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -263,11 +294,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tk3-u7-v5n"/>
+                    <navigationItem key="navigationItem" id="tk3-u7-v5n">
+                        <barButtonItem key="leftBarButtonItem" image="Cancel-Black@1x.png" id="c0H-ph-Fd8">
+                            <connections>
+                                <action selector="onCancelButtonTapped:" destination="pRS-Xv-GIl" id="eyf-bQ-A2z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Y4-6l-ZF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4018" y="139"/>
+            <point key="canvasLocation" x="3806" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3TI-sC-Xiy">
@@ -290,6 +327,7 @@
         <!--Navigation Controller-->
         <scene sceneID="X6e-SS-YFw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QIM-4M-XY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4WY-Sp-ww9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGT-dF-GZj">
@@ -301,11 +339,13 @@
                         <segue destination="pRS-Xv-GIl" kind="relationship" relationship="rootViewController" id="m8x-4s-0ll"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QIM-4M-XY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3124" y="139"/>
+            <point key="canvasLocation" x="2858" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cancel-Black@1x.png" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VLu-uU-iWO"/>
     </inferredMetricsTieBreakers>
